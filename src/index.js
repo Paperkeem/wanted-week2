@@ -5,11 +5,14 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import store from './store/store';
 import KanvanMain from './page/KanvanMain';
+import { StorageProvider } from './context/StorageContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
-    <KanvanMain />
+    <StorageProvider>
+      <KanvanMain />
+    </StorageProvider>
   </Provider>
 );
 
