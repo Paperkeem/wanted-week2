@@ -2,10 +2,14 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { TbClick } from 'react-icons/tb';
 import { AiFillDelete } from 'react-icons/ai';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { changeList } from '../store/store';
 import Modal from './Modal';
 
-export default function Canvanitem({ issue, issue: { id, content }, idx }) {
+export default function Canvanitem({ issue, issue: { id, content, status }, idx }) {
+  const data = useSelector((state) => { return state.issue });
+  const dispatch = useDispatch();
+  
   const [ismodal, setIsmodal] = useState(false);
 
   const onDragStart = (e, id) => {
@@ -18,8 +22,11 @@ export default function Canvanitem({ issue, issue: { id, content }, idx }) {
   };
 
   const handelClick = () => setIsmodal(true);
-  const handelDelete = () => {
-    
+  const handelDelete = (id) => {
+    const updateList = { ...data };
+    const newStatus = updateList[status].filter(data => data.id !== id);
+    updateList[status] = newStatus;
+    dispatch(changeList(updateList));
   }
 
 
@@ -35,7 +42,7 @@ export default function Canvanitem({ issue, issue: { id, content }, idx }) {
           onClick={handelClick}
           style={{ cursor: 'pointer', marginRight:'5px' }} />
         <AiFillDelete
-          onClick={handelDelete}
+          onClick={()=>handelDelete(id)}
           style={{ cursor: 'pointer' }} />
       </div>  
       {ismodal &&

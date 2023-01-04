@@ -14,9 +14,9 @@ let issue = createSlice({
       { id: 6, content: "이슈 6", title: "데모", date: "2023-01-23T03:57", status: "inProgress", people: "라이언" },
     ],
     completed: [
-      { id: 7, content: "이슈 7", title: "데모", date: "2023-01-23T03:57", status: "inProgress", people: "라이언" },
-      { id: 8, content: "이슈 8", title: "데모", date: "2023-01-23T03:57", status: "inProgress", people: "라이언" },
-      { id: 9, content: "이슈 9", title: "데모", date: "2023-01-23T03:57", status: "inProgress", people: "라이언" },
+      { id: 7, content: "이슈 7", title: "데모", date: "2023-01-23T03:57", status: "completed", people: "라이언" },
+      { id: 8, content: "이슈 8", title: "데모", date: "2023-01-23T03:57", status: "completed", people: "라이언" },
+      { id: 9, content: "이슈 9", title: "데모", date: "2023-01-23T03:57", status: "completed", people: "라이언" },
     ]
   },
   reducers: {

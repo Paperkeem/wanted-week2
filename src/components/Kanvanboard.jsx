@@ -30,7 +30,12 @@ export default function Canvanboard({ issue, id }) {
 
     let { where, id: hoverElementId } = beforeOrAfter(e.target, e.clientY);
     const updateList = { ...originData };
-    const movingData = updateList[from].filter(el => el.id == itemId);
+    
+    const movingData = updateList[from].filter(el => el.id == itemId).map(el => {
+      return { ...el, status: to }
+    });
+    console.log(movingData);
+
     let newFrom = updateList[from].filter(el => el.id != itemId);
     let newTo;
     
