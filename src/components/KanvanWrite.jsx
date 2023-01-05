@@ -37,7 +37,15 @@ export default function CanvanWrite({setIsform}) {
     
     let id = uuid();
     const { status } = list;
-    const updateList = { ...originData, [status]: [...originData[status], { ...list, id }] };
+    
+    const originState = originData[status]; // 객체
+    let updateList;
+    if ( originState !== null ) {
+      updateList = { ...originData, [status]: [ ...originState, { ...list, id } ] };
+    } else {
+      updateList = { ...originData, [status]: [ { ...list, id } ] };
+    }
+    
     dispatch(addList(updateList));
     setIsform(false);
   }
