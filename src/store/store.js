@@ -1,5 +1,10 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit'
 
+let user = createSlice({
+  name: 'user',
+  initialState: ['김민지','김진수','김진우','김지현'],
+})
+
 let issue = createSlice({
   name: 'issue',
   initialState: {
@@ -33,6 +38,7 @@ export const { changeList, addList } = issue.actions
 
 export default configureStore({
   reducer: { 
-    issue : issue.reducer
+    issue: issue.reducer,
+    user: user.reducer,
   }
 }) 
